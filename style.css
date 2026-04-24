@@ -41,18 +41,12 @@ strong{color:var(--w);font-weight:600}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;position:relative}
 .hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(251,100,34,.06) 0%,transparent 65%);pointer-events:none}
 .hero-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:50px;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);border:1px solid rgba(251,100,34,.25);background:var(--orange-d);margin-bottom:36px}
+/* Hero Peek (bot peeking over chip) */
+.hero-peek{position:relative;z-index:2;margin-bottom:-18px;animation:peekIn .8s var(--ease) both,peekFloat 3s ease-in-out infinite .8s}
+.hero-peek img{height:48px;filter:drop-shadow(0 4px 16px rgba(251,100,34,.25))}
+@keyframes peekIn{from{opacity:0;transform:translateY(20px) scale(.6)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes peekFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-/* Hero Logo */
-.hero-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px;animation:fadeIn .8s ease}
-.hero-logo img{height:38px;filter:brightness(1.1)}
-.hero-logo-tag{font-size:.55rem;font-weight:800;letter-spacing:3px;color:var(--orange);padding:4px 10px;border:1px solid rgba(251,100,34,.3);border-radius:5px;background:var(--orange-d);text-transform:uppercase}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
-
-/* Transition Logo */
-.trans-logo{height:32px;filter:brightness(1.1);margin-bottom:24px;opacity:.8}
-
-/* Final Logo */
-.final-logo{height:36px;filter:brightness(1.1);margin-bottom:20px;opacity:.9}
 .hero-chip i{font-size:.7rem}
 .hero h1{font-family:var(--fh);font-size:clamp(3.5rem,9vw,7rem);line-height:.88;letter-spacing:-2px;margin-bottom:28px;text-transform:uppercase;font-weight:400}
 .hero-sub{font-size:1.05rem;color:var(--t2);max-width:480px;margin:0 auto 48px;font-weight:400;line-height:1.7}
@@ -250,11 +244,8 @@ strong{color:var(--w);font-weight:600}
   .topbar-tag{font-size:.45rem;padding:2px 5px}
   .topbar-xp{font-size:.75rem}
 
-  .hero-logo img{height:30px}
-  .hero-logo-tag{font-size:.45rem;letter-spacing:2px;padding:3px 7px}
-  .hero-logo{margin-bottom:24px}
-  .trans-logo{height:26px;margin-bottom:18px}
-  .final-logo{height:28px;margin-bottom:14px}
+  .hero-peek img{height:38px}
+  .hero-peek{margin-bottom:-14px}
 
   .hero{padding:32px 20px;min-height:100dvh}
   .hero h1{font-size:clamp(2.8rem,12vw,4rem);letter-spacing:-1px}
