@@ -33,12 +33,16 @@ const MODS=[
 {type:'tf',icon:'fi-sr-interrogation',ic:'green',title:'¿Verdadero o Falso?',
  desc:'Los contratos de futuros te obligan a comprar o vender en una fecha específica.',answer:true,
  exp:{t:'Verdadero',p:'A diferencia de las opciones (que son un derecho), los futuros son una obligación. Pero no te preocupes — BOTFX gestiona todo esto automáticamente.'}},
+{type:'act',icon:'fi-sr-arrow-alt-circle-right',ic:'green',title:'¿Qué es el Delta?',
+ desc:'Un CALL tiene Delta 0.70. Si la acción sube $1, el precio del CALL sube:',
+ ch:[{t:'$0.70 — se mueve 70% del activo',k:'A',ok:true},{t:'$1.00 — se mueve igual',k:'B',ok:false},{t:'$0.10',k:'C',ok:false}],
+ exp:{t:'Delta = sensibilidad al precio',p:'Delta mide cuánto cambia el precio de una opción por cada $1 que se mueve el activo. Delta 0.70 = la opción se mueve $0.70 por cada $1. BOTFX usa el Delta para calcular las zonas de GEX Bubbles.'}},
 {type:'fill',icon:'fi-sr-pencil',ic:'green',title:'Completa la frase',
- sentence:'Un ___ te da el derecho a comprar. Un ___ te da el derecho a vender.',
- blanks:['CALL','PUT'],opts:['CALL','PUT','STOP','BUY'],
- exp:{t:'CALL = comprar, PUT = vender',p:'Estas son las dos piezas fundamentales de las opciones. BOTFX detecta oportunidades en ambas direcciones.'}},
+ sentence:'Un ___ te da el derecho a comprar. El ___ mide cuánto se mueve una opción por cada $1 del activo.',
+ blanks:['CALL','Delta'],opts:['CALL','Delta','PUT','volumen'],
+ exp:{t:'CALL = derecho a comprar, Delta = sensibilidad',p:'El Delta es clave para entender opciones. BOTFX lo usa para detectar dónde están posicionadas las instituciones (GEX Bubbles).'}},
 {type:'info',icon:'fi-sr-bulb',ic:'green',title:'Resumen',
- desc:'CALL = ganas si sube. PUT = ganas si baja. Los futuros son obligaciones, las opciones son derechos. Con BOTFX no necesitas ser experto en estos instrumentos.'}
+ desc:'CALL = ganas si sube. PUT = ganas si baja. Delta = cuánto se mueve la opción por cada $1. Los futuros son obligaciones, las opciones son derechos. BOTFX usa el Delta para calcular GEX Bubbles.'}
 ]},
 // ─── M3: Tu Cartera ───
 {id:'m3',title:'Tu cartera de inversión',icon:'fi-sr-briefcase',xp:45,steps:[
