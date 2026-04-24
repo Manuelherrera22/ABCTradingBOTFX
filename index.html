@@ -95,8 +95,60 @@
                     <div class="fs"><div class="fs-val" id="fModules">5/5</div><div class="fs-lbl">Módulos</div></div>
                     <div class="fs"><div class="fs-val" id="fRank">Élite</div><div class="fs-lbl">Rango</div></div>
                 </div>
-                <a href="https://www.botfx.ai/pricing" class="btn btn-p lg final-cta"><i class="fi fi-sr-bolt"></i> Activar Plan Pro</a>
+                <p class="final-xp-note"><i class="fi fi-sr-star"></i> Tu XP se convertirá en tokens para ChatTrade</p>
+                <button class="btn btn-p lg final-cta" onclick="openDemo()"><i class="fi fi-sr-comment-alt"></i> Probar ChatTrade</button>
                 <button class="btn btn-o" onclick="resetAll()" style="margin-top:12px"><i class="fi fi-rr-refresh"></i> Repetir curso</button>
+            </div>
+        </div>
+
+        <!-- ═══ ASKCHRIS DEMO (faithful to real BOTFX ChatTrade) ═══ -->
+        <div class="view" id="viewDemo">
+            <div class="demo-app">
+                <!-- Top Bar -->
+                <div class="demo-topbar">
+                    <div class="demo-symbol" id="demoSymbol">
+                        <span class="demo-dot btc"></span>
+                        <div><strong>BTCUSD</strong><small>Bitcoin</small></div>
+                    </div>
+                    <div class="demo-role">Developing Trader</div>
+                    <div class="demo-tokens"><i class="fi fi-sr-diamond"></i> <span id="demoTokens">0</span></div>
+                </div>
+                <!-- Buy/Sell -->
+                <div class="demo-actions-bar">
+                    <span class="demo-tag buy"><i class="fi fi-rr-arrow-trend-up"></i> Buy</span>
+                    <span class="demo-tag sell"><i class="fi fi-rr-arrow-trend-down"></i> Sell</span>
+                </div>
+                <!-- Chat -->
+                <div class="demo-chat-area">
+                    <div class="demo-chat-header">
+                        <img src="bot_mark.png" alt="" class="demo-bot-avatar">
+                        <div><strong>Ask Chris</strong><small>BTCUSD Chat</small></div>
+                        <span class="demo-chat-tokens">850 tokens/msg</span>
+                    </div>
+                    <div class="demo-chat-body" id="demoChatBody">
+                        <div class="demo-welcome">
+                            <img src="bot_mark.png" alt="" class="demo-welcome-icon">
+                            <h3>¿Cómo puedo ayudarte hoy?</h3>
+                            <p>Listo para ayudarte a operar BTCUSD.</p>
+                        </div>
+                    </div>
+                    <!-- Quick Actions -->
+                    <div class="demo-quick" id="demoQuick">
+                        <button class="demo-qbtn analysis" onclick="demoAsk('analysis')"><i class="fi fi-sr-chart-mixed-up-circle-dollar"></i> Análisis de Mercado</button>
+                        <button class="demo-qbtn opp" onclick="demoAsk('opportunity')"><i class="fi fi-sr-diamond"></i> Encontrar Oportunidades</button>
+                    </div>
+                    <!-- Input -->
+                    <div class="demo-input-bar">
+                        <input type="text" class="demo-input" placeholder="Pregúntame sobre trading..." readonly onclick="demoAsk('custom')">
+                        <button class="demo-send"><i class="fi fi-sr-paper-plane-top"></i></button>
+                    </div>
+                </div>
+                <!-- Features -->
+                <div class="demo-features">
+                    <div class="demo-feat"><i class="fi fi-sr-chart-line-up"></i><strong>Análisis de Mercado</strong><small>Datos en tiempo real y análisis técnico</small></div>
+                    <div class="demo-feat"><i class="fi fi-sr-brain"></i><strong>Impulsado por IA</strong><small>IA entrenada en estrategias de trading</small></div>
+                    <div class="demo-feat"><i class="fi fi-sr-bolt"></i><strong>Datos en Tiempo Real</strong><small>Movimientos de precios en vivo</small></div>
+                </div>
             </div>
         </div>
     </div>

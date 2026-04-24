@@ -211,3 +211,109 @@ function confetti(){
     document.body.appendChild(c);setTimeout(()=>c.remove(),3500)}
 }
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+// ── CHATTRADE DEMO ENGINE ──
+let demoStep=0;
+
+function openDemo(){
+  demoStep=0;
+  showView('viewDemo');
+  animateCount('demoTokens',ST.xp*10);
+  document.getElementById('demoChatBody').innerHTML=`
+    <div class="demo-welcome">
+      <img src="bot_mark.png" alt="" class="demo-welcome-icon">
+      <h3>¿Cómo puedo ayudarte hoy?</h3>
+      <p>Listo para ayudarte a operar BTCUSD.</p>
+    </div>`;
+  document.getElementById('demoQuick').style.display='flex';
+  document.getElementById('demoQuick').innerHTML=`
+    <button class="demo-qbtn analysis" onclick="demoAsk('analysis')"><i class="fi fi-sr-chart-mixed-up-circle-dollar"></i> Análisis de Mercado</button>
+    <button class="demo-qbtn opp" onclick="demoAsk('opportunity')"><i class="fi fi-sr-diamond"></i> Encontrar Oportunidades</button>`;
+}
+
+function exitDemo(){showView('viewFinal');updateFinal()}
+
+const DEMO_FLOWS={
+  analysis:{
+    userMsg:'Análisis de mercado para BTCUSD',
+    botReply:'<strong>BTCUSD — Análisis en tiempo real</strong><br><br>Bitcoin se consolida alrededor de <strong>$67,420</strong>.<br><br>Indicadores clave:<br>• RSI (14): 58.3 — neutral-alcista<br>• MACD: cruce alcista confirmado<br>• Volumen: +12% últimas 4h<div class="demo-signal"><div class="demo-signal-row"><span>Sesgo</span><strong>COMPRAS 74%</strong></div><div class="demo-signal-row"><span>Zona de entrada</span><strong>$67,200 - $67,500</strong></div><div class="demo-signal-row"><span>Stop Loss</span><strong>$66,800</strong></div><div class="demo-signal-row"><span>Take Profit</span><strong>$68,900</strong></div><div class="demo-signal-row"><span>R/R</span><strong>1:2.8</strong></div></div>',
+    followQ:'¿Cuánto debería arriesgar?',
+    followA:'Con la regla del 2% que aprendiste:<br><br>Si tu cuenta = <strong>$1,000</strong> → riesgo máximo = <strong>$20</strong><br><br>• Entrada: $67,350<br>• Stop Loss: $66,800<br>• Tamaño: <strong>0.003 BTC</strong><br><br>BOTFX calcula esto automáticamente en cada señal.'
+  },
+  opportunity:{
+    userMsg:'Encontrar oportunidades ahora',
+    botReply:'<strong>Top 3 señales activas:</strong><br><br>1. <strong>BTCUSD</strong> — Compras 74% — R/R 1:2.8<br>2. <strong>EURUSD</strong> — Ventas 68% — R/R 1:2.1<br>3. <strong>XAUUSD</strong> — Compras 81% — R/R 1:3.2<div class="demo-signal"><div class="demo-signal-row"><span>Mejor oportunidad</span><strong>XAUUSD (Oro)</strong></div><div class="demo-signal-row"><span>Probabilidad</span><strong>81% COMPRAS</strong></div><div class="demo-signal-row"><span>R/R</span><strong>1:3.2</strong></div><div class="demo-signal-row"><span>GEX</span><span class="demo-signal-tag long">Muro institucional</span></div></div>',
+    followQ:'¿Cómo abro esta operación?',
+    followA:'Para operar XAUUSD:<br><br>1. Abre tu broker conectado a BOTFX<br>2. Busca <strong>XAUUSD</strong><br>3. Configura:<br>• <strong>Buy Limit</strong> en zona de entrada<br>• Stop Loss según la señal<br>• Take Profit automático<br><br>En BOTFX real, todo con un solo clic.'
+  },
+  custom:{
+    userMsg:'¿Qué hace especial a BOTFX?',
+    botReply:'<strong>3 tecnologías únicas:</strong><br><br>1. <strong>GEX Bubbles</strong> — Detecta dónde están las instituciones. GPS del dinero grande.<br><br>2. <strong>IA Predictiva</strong> — +200 variables en tiempo real con probabilidad exacta.<br><br>3. <strong>ChatTrade</strong> — Tu asistente IA. Pregunta lo que quieras con datos en vivo.<br><br>Todo lo del ABC del Trading, BOTFX lo ejecuta automáticamente.',
+    followQ:'¿Cuánto cuesta?',
+    followA:'Planes desde <strong>$29/mes</strong>.<br><br>Incluye:<br>• Señales en 63 activos<br>• GEX Bubbles en vivo<br>• ChatTrade con Ask Chris<br>• Tokens mensuales<br><br>Tus tokens del ABC se acreditan al registrarte.'
+  }
+};
+
+function demoAsk(type){
+  if(demoStep>=2){showDemoCTA();return}
+  const flow=DEMO_FLOWS[type];
+  const chat=document.getElementById('demoChatBody');
+  const quick=document.getElementById('demoQuick');
+  const w=chat.querySelector('.demo-welcome');
+  if(w)w.remove();
+  quick.style.display='none';
+
+  addBubble(chat,'user',flow.userMsg);
+  setTimeout(()=>{
+    const t=addTyping(chat);
+    setTimeout(()=>{
+      t.remove();
+      addBubble(chat,'bot',flow.botReply);
+      chat.scrollTop=chat.scrollHeight;
+      demoStep++;
+      setTimeout(()=>{
+        quick.innerHTML=`<button class="demo-qbtn analysis" onclick="demoFollowUp('${type}')"><i class="fi fi-rr-interrogation"></i> ${flow.followQ}</button>`;
+        quick.style.display='flex';
+      },600);
+    },1800);
+  },400);
+}
+
+function demoFollowUp(type){
+  const flow=DEMO_FLOWS[type];
+  const chat=document.getElementById('demoChatBody');
+  const quick=document.getElementById('demoQuick');
+  quick.style.display='none';
+
+  addBubble(chat,'user',flow.followQ);
+  setTimeout(()=>{
+    const t=addTyping(chat);
+    setTimeout(()=>{
+      t.remove();
+      addBubble(chat,'bot',flow.followA);
+      chat.scrollTop=chat.scrollHeight;
+      demoStep++;
+      if(demoStep>=2)setTimeout(showDemoCTA,800);
+    },1500);
+  },400);
+}
+
+function addBubble(c,type,html){
+  const d=document.createElement('div');d.className='demo-bubble '+type;
+  d.innerHTML=html;c.appendChild(d);c.scrollTop=c.scrollHeight;return d;
+}
+function addTyping(c){
+  const d=document.createElement('div');d.className='demo-typing';
+  d.innerHTML='<span></span><span></span><span></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;return d;
+}
+
+function showDemoCTA(){
+  const quick=document.getElementById('demoQuick');
+  quick.innerHTML=`
+    <div class="demo-cta-banner">
+      <p>Esto fue una demo. En <strong>BOTFX real</strong>, Ask Chris responde con datos de mercado en vivo, señales al segundo, y análisis institucional con GEX Bubbles.</p>
+      <a href="https://www.botfx.ai/register" target="_blank" class="demo-cta-link"><i class="fi fi-sr-bolt"></i> Crear cuenta BOTFX</a>
+    </div>`;
+  quick.style.display='flex';
+}
+

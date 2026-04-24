@@ -212,6 +212,95 @@ strong{color:var(--w);font-weight:600}
 .levelup i{margin-right:8px}
 @keyframes lvlSlide{0%{transform:translateY(-100%)}12%{transform:translateY(0)}85%{transform:translateY(0)}100%{transform:translateY(-100%)}}
 
+/* ── XP Note ── */
+.final-xp-note{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.78rem;color:var(--orange);font-weight:600;margin-bottom:20px;padding:10px 20px;border-radius:50px;background:var(--orange-d);border:1px solid rgba(251,100,34,.2)}
+.final-xp-note i{font-size:.75rem}
+
+/* ── CHATTRADE DEMO ── */
+.demo-app{display:flex;flex-direction:column;height:100vh;background:#1a1d26;color:#e2e8f0}
+
+/* Demo Top Bar */
+.demo-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#1e2130;border-bottom:1px solid #2d3148}
+.demo-symbol{display:flex;align-items:center;gap:8px;padding:6px 14px;background:#262a3a;border-radius:10px}
+.demo-symbol strong{font-size:.8rem;color:#e2e8f0;display:block}
+.demo-symbol small{font-size:.6rem;color:#8892b0}
+.demo-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.demo-dot.btc{background:#f7931a}
+.demo-role{font-size:.68rem;color:#8892b0;padding:6px 12px;border:1px solid #2d3148;border-radius:8px;display:none}
+.demo-tokens{display:flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:#f7931a;padding:6px 14px;background:#262a3a;border-radius:10px}
+.demo-tokens i{font-size:.7rem}
+
+/* Buy/Sell Tags */
+.demo-actions-bar{display:flex;gap:8px;padding:8px 16px}
+.demo-tag{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:8px;font-size:.7rem;font-weight:700}
+.demo-tag.buy{background:rgba(34,197,94,.12);color:#22c55e;border:1px solid rgba(34,197,94,.2)}
+.demo-tag.sell{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+
+/* Chat Area */
+.demo-chat-area{flex:1;display:flex;flex-direction:column;margin:0 12px;border-radius:14px;background:#1e2130;border:1px solid #2d3148;overflow:hidden}
+.demo-chat-header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #2d3148}
+.demo-bot-avatar{width:28px;height:28px;border-radius:8px;background:#262a3a;padding:4px}
+.demo-chat-header strong{font-size:.8rem;color:#e2e8f0;display:block}
+.demo-chat-header small{font-size:.6rem;color:#8892b0}
+.demo-chat-tokens{margin-left:auto;font-size:.6rem;color:#8892b0}
+
+.demo-chat-body{flex:1;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:12px}
+.demo-welcome{text-align:center;padding:30px 10px}
+.demo-welcome-icon{width:42px;height:42px;margin:0 auto 14px;opacity:.5}
+.demo-welcome h3{font-size:1rem;color:#e2e8f0;margin-bottom:6px;font-weight:600}
+.demo-welcome p{font-size:.78rem;color:#8892b0}
+
+/* Chat Bubbles */
+.demo-bubble{max-width:88%;padding:12px 16px;border-radius:14px;font-size:.82rem;line-height:1.65;animation:dBubIn .35s var(--ease)}
+.demo-bubble.bot{align-self:flex-start;background:#262a3a;color:#e2e8f0;border-bottom-left-radius:4px}
+.demo-bubble.user{align-self:flex-end;background:#3b82f6;color:#fff;border-bottom-right-radius:4px}
+.demo-bubble strong{color:#f7931a}
+.demo-bubble.user strong{color:#ffd700}
+@keyframes dBubIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Signal Card inside bubble */
+.demo-signal{margin-top:10px;padding:10px 12px;background:rgba(247,147,26,.05);border:1px solid rgba(247,147,26,.15);border-radius:10px;display:flex;flex-direction:column;gap:5px}
+.demo-signal-row{display:flex;justify-content:space-between;font-size:.72rem;color:#8892b0}
+.demo-signal-row strong{color:#e2e8f0}
+.demo-signal-tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.6rem;font-weight:700}
+.demo-signal-tag.long{background:rgba(34,197,94,.12);color:#22c55e}
+
+/* Typing indicator */
+.demo-typing{align-self:flex-start;padding:10px 16px;background:#262a3a;border-radius:14px;border-bottom-left-radius:4px;display:flex;gap:5px;animation:dBubIn .3s var(--ease)}
+.demo-typing span{width:6px;height:6px;background:#8892b0;border-radius:50%;animation:dtBounce 1.2s infinite}
+.demo-typing span:nth-child(2){animation-delay:.2s}
+.demo-typing span:nth-child(3){animation-delay:.4s}
+@keyframes dtBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+
+/* Quick Action Buttons */
+.demo-quick{display:flex;gap:8px;padding:10px 14px}
+.demo-qbtn{padding:8px 16px;border-radius:10px;font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:6px;border:none;cursor:pointer;transition:all .2s}
+.demo-qbtn.analysis{background:#7c3aed;color:#fff}
+.demo-qbtn.analysis:hover{background:#6d28d9}
+.demo-qbtn.opp{background:#16a34a;color:#fff}
+.demo-qbtn.opp:hover{background:#15803d}
+
+/* Input Bar */
+.demo-input-bar{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #2d3148}
+.demo-input{flex:1;background:#262a3a;border:1px solid #2d3148;border-radius:10px;padding:12px 16px;color:#e2e8f0;font-size:.8rem;font-family:var(--f)}
+.demo-input::placeholder{color:#5a6480}
+.demo-send{width:44px;height:44px;border-radius:10px;background:#3b82f6;border:none;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all .2s}
+.demo-send:hover{background:#2563eb}
+
+/* Features */
+.demo-features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px 12px;border-top:1px solid #2d3148;background:#1e2130}
+.demo-feat{text-align:center;padding:12px 6px}
+.demo-feat i{font-size:1.1rem;color:#f7931a;display:block;margin-bottom:6px}
+.demo-feat strong{font-size:.68rem;color:#e2e8f0;display:block;margin-bottom:3px}
+.demo-feat small{font-size:.55rem;color:#8892b0;line-height:1.3}
+
+/* CTA Banner in demo */
+.demo-cta-banner{padding:16px;margin:0 14px 10px;border-radius:12px;background:linear-gradient(135deg,#f7931a,#fb6422);text-align:center;animation:dBubIn .4s var(--ease)}
+.demo-cta-banner p{font-size:.78rem;color:rgba(255,255,255,.85);margin-bottom:10px;line-height:1.5}
+.demo-cta-banner strong{color:#fff}
+.demo-cta-link{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:10px;background:#fff;color:#1a1d26;font-size:.8rem;font-weight:700;text-decoration:none;transition:all .2s}
+.demo-cta-link:hover{transform:scale(1.03);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+
 /* ── CONFETTI ── */
 .confetti{position:fixed;z-index:400;pointer-events:none;animation:cfall 2s ease-in forwards}
 .confetti.square{width:8px;height:8px;border-radius:2px}
