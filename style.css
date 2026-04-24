@@ -74,7 +74,13 @@ strong{color:var(--w);font-weight:600}
 .l-xp{font-size:.78rem;font-weight:700;color:var(--orange);display:flex;align-items:center;gap:5px}
 .l-xp i{font-size:.8rem}
 
-.lesson-body{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 20px;overflow-y:auto}
+.lesson-body{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 20px;overflow-y:auto;position:relative}
+
+/* Bot peeking in lesson */
+.lesson-peek{position:absolute;bottom:8px;right:16px;pointer-events:none;opacity:.12;animation:lpIn .6s var(--ease) .5s both,lpBob 3s ease-in-out 1.5s infinite}
+.lesson-peek img{height:44px;clip-path:inset(0 0 30% 0)}
+@keyframes lpIn{from{opacity:0;transform:translateY(20px)}to{opacity:.12;transform:translateY(0)}}
+@keyframes lpBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 
 .lcard{width:100%;max-width:520px;text-align:center;animation:cardPop .4s var(--ease);position:relative}
 @keyframes cardPop{from{opacity:0;transform:scale(.94) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
@@ -270,6 +276,9 @@ strong{color:var(--w);font-weight:600}
 
   .step-count{gap:5px;margin-bottom:18px}
   .step-pip{width:8px;height:8px}
+
+  .lesson-peek{bottom:4px;right:10px}
+  .lesson-peek img{height:34px}
 
   .choices{gap:8px}
   .ch{padding:14px 14px;font-size:.82rem;gap:10px;border-radius:14px}
