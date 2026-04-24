@@ -1,6 +1,6 @@
 // ===== ABC DEL TRADING — Engine (content in content.js) =====
 const ST={xp:0,streak:0,done:[],modIdx:0,step:0,lxp:0,combo:0};
-const RANKS=['Novato','Aprendiz','Estudiante','Trader Jr.','Trader','Analista','Estratega','Gestor','Avanzado','Profesional','Pro Trader','Máster','Élite'];
+const RANKS=['Novato','Aprendiz','Estudiante','Iniciado','Trader Jr.','Analista Jr.','Trader','Analista','Estratega','Táctico','Gestor','Avanzado','Profesional','Experto','Pro Trader','Máster','Senior','Leyenda','Élite'];
 
 // ── Init ──
 document.addEventListener('DOMContentLoaded',()=>{
